@@ -692,13 +692,16 @@ ul, ol {
 /* ============================================
    Mobile Menu Overlay
    ============================================ */
-.mobile-overlay {
+
+/* Hide mobile-only elements on desktop */
+.mobile-nav-extras {
   display: none;
 }
 
 @media (max-width: 960px) {
-  /* --- Header mobile --- */
+  /* --- Header mobile nav overlay --- */
   .header__nav {
+    display: flex;
     position: fixed;
     top: 0;
     left: 0;
@@ -712,12 +715,14 @@ ul, ol {
     gap: 0;
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
     transition: opacity 0.3s ease, visibility 0.3s ease;
   }
 
   .header__nav.open {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
   }
 
   .header__nav-link {
@@ -731,7 +736,7 @@ ul, ol {
     display: none;
   }
 
-  /* Mobile nav extras (lang + CTA inside menu) */
+  /* Show mobile nav extras inside menu */
   .header__nav .mobile-nav-extras {
     display: flex;
     flex-direction: column;
@@ -740,11 +745,14 @@ ul, ol {
     margin-top: 32px;
     padding-top: 32px;
     border-top: 1px solid var(--color-gray-200);
+    width: 200px;
   }
 
   .header__nav .mobile-nav-extras .btn {
     font-size: 16px;
     padding: 14px 36px;
+    width: 100%;
+    justify-content: center;
   }
 
   .header__nav .mobile-nav-extras .lang-switch {

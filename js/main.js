@@ -73,9 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- Language switch ---
-  const langSwitch = document.querySelector('.lang-switch');
-  if (langSwitch) {
-    langSwitch.addEventListener('click', () => {
+  const langSwitches = document.querySelectorAll('.lang-switch');
+  langSwitches.forEach(btn => {
+    btn.addEventListener('click', () => {
       const currentLang = document.documentElement.lang || 'de';
       const basePath = document.querySelector('meta[name="base-path"]');
       const base = basePath ? basePath.content : '';
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = base + '/';
       }
     });
-  }
+  });
 
   // --- Fade-in on scroll ---
   const fadeElements = document.querySelectorAll('.fade-in');
