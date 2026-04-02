@@ -19,15 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('.header__nav');
   if (menuToggle && nav) {
     menuToggle.addEventListener('click', () => {
-      nav.classList.toggle('open');
+      const isOpen = nav.classList.toggle('open');
       menuToggle.classList.toggle('active');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
-    // Close on link click
-    nav.querySelectorAll('.header__nav-link').forEach(link => {
-      link.addEventListener('click', () => {
+    // Close on any link/button click inside nav
+    nav.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('click', () => {
         nav.classList.remove('open');
         menuToggle.classList.remove('active');
+        document.body.style.overflow = '';
       });
     });
   }
