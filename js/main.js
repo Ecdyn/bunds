@@ -75,10 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (langSwitch) {
     langSwitch.addEventListener('click', () => {
       const currentLang = document.documentElement.lang || 'de';
+      const basePath = document.querySelector('meta[name="base-path"]');
+      const base = basePath ? basePath.content : '';
       if (currentLang === 'de') {
-        window.location.href = '/en/';
+        window.location.href = base + '/en/';
       } else {
-        window.location.href = '/';
+        window.location.href = base + '/';
       }
     });
   }
